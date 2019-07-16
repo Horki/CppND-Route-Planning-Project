@@ -27,6 +27,15 @@ static std::optional<std::vector<std::byte>> ReadFile(const std::string &path)
     return std::move(contents);
 }
 
+static void check_range(const std::string &s, float &point) {
+    std::cout << s;
+    std::cin >> point;
+    if (point < 0 || point > 100.0) {
+        std::cout << "Invalid range, try again\n";
+        check_range(s, point);
+    }
+}
+
 int main(int argc, const char **argv)
 {    
     std::string osm_data_file = "";
@@ -53,12 +62,28 @@ int main(int argc, const char **argv)
     // TODO: Declare floats `start_x`, `start_y`, `end_x`, and `end_y` and get
     // user input for these values using std::cin. Pass the user input to the
     // RoutePlanner object below.
+    float start_x, start_y, end_x, end_y;
+    std::cout << "The map coordinates begin at (0, 0) in the lower left corner, and end at (100, 100) in the upper right corner.\n";
+//    check_range("Enter a start x between 0 and 100: ", start_x);
+//    check_range("Enter a start y between 0 and 100: ", start_y);
+//    check_range("Enter a end x between 0 and 100: ",   end_x);
+//    check_range("Enter a end y between 0 and 100: ",   end_y);
+    start_x = 10.f;
+    start_y = 10.f;
+    end_x   = 90.f;
+    end_y   = 90.f;
+
+    std::cout << "Start (" << start_x << ", " << start_y << ") End (" << end_x << ", " << end_y << ")\n";
+
 
     // Build Model.
     RouteModel model{osm_data};
 
     // Perform search and render results.
-    RoutePlanner route_planner{model, 10, 10, 90, 90};
+//    RoutePlanner route_planner{model, 10, 10, 90, 90};
+    RoutePlanner route_planner{model, start_x, start_y, end_x, end_y};
+    route_planner.AStarSearch();
+    std::cout << "Distance: " << route_planner.GetDistance() << " meters.\n";
     Render render{model};
 
     auto display = io2d::output_surface{400, 400, io2d::format::argb32, io2d::scaling::none, io2d::refresh_style::fixed, 30};
