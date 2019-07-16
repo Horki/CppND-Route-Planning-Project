@@ -98,6 +98,8 @@ Write NextNode | Done
 Write distance function | Done
 
 
+<!--
+
 Tests
 
 | Exercise Name               | `-DTESTING` String Value | Status |
@@ -111,7 +113,7 @@ Tests
 | Find the Closest Node       |       "FindClosest"      | FAILED |
 | Write the A\* Search Stub   |        "AStarStub"       | FAILED |
 | Finish A\* Search           |       "AStarSearch"      | FAILED |
-
+-->
 
 
 Running "Route Planning Project" start(10, 10), end(90, 90)
