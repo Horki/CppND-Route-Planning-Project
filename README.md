@@ -60,3 +60,59 @@ Exercises with tests will specify which string to pass with `-DTESTING`, but a t
 | Write the A\* Search Stub   |        "AStarStub"       |
 | Finish A\* Search           |       "AStarSearch"      |
 
+
+# My solution
+
+Compile
+
+```bash
+make build
+```
+
+Run (ex: from build)
+
+```bash
+build $ ../bin/CppND-Route-Planning-Project -f ../map.osm
+```
+
+Tasks
+
+Exercise Name | Status
+--- | ---
+Add User Input | Done
+Complete A\* Star Search | Done
+Create RouteModel Nodes | Done
+Fill RoutePlanner constructor | Done
+Fill out Node class | Done
+Fill out RouteModel class | Done
+Fill out RoutePlanner class | Done
+Write A\* Star Search stub | Done
+Write AddNeighbors | Done
+Write CalculateHValue | Done
+Write ConstructFinalPath | Done
+Write CreateNodeToRoadHashmap | Done
+Write FindClosestNode | Done
+Write FindNeighbor | Done
+Write FindNeighbors | Done
+Write NextNode | Done
+Write distance function | Done
+
+
+Tests
+
+| Exercise Name               | `-DTESTING` String Value | Status |
+|-----------------------------|:------------------------:|:-------|
+| Fill Out Route Model        |       "RouteModel"       | FAILED |
+| Fill Out Node Class         |       "RMNodeClass"      | FAILED |
+| Create RouteModel Nodes     |        "RMSNodes"        | PASSED |
+| Write the Distance Function |        "NodeDist"        | PASSED |
+| Create Road to Node Hashmap |       "NodeToRoad"       | FAILED |
+| Write FindNeighbors         |      "FindNeighbors"     | FAILED |
+| Find the Closest Node       |       "FindClosest"      | FAILED |
+| Write the A\* Search Stub   |        "AStarStub"       | FAILED |
+| Finish A\* Search           |       "AStarSearch"      | FAILED |
+
+
+
+Running "Route Planning Project" start(10, 10), end(90, 90)
+![Route Planning Project](img/Route-Planning-Project.png)
