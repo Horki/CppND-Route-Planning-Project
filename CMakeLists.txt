@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.11.3)
 
 if(NOT TESTING)
-    set(TESTING "notest")
+  set(TESTING "notest")
 endif()
 
 message("TESTING = ${TESTING}")
@@ -35,5 +35,3 @@ set(IO2D_WITHOUT_SAMPLES 1)
 set(IO2D_WITHOUT_TESTS 1)
 add_subdirectory(src)
 add_subdirectory(test)
-add_subdirectory(thirdparty/pugixml)
-add_subdirectory(thirdparty/googletest)
