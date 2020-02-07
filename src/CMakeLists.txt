@@ -3,6 +3,9 @@
 #
 set(project_BIN ${PROJECT_NAME})
 
+include_directories(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
+
 #
 # Find all executables
 #
@@ -14,19 +17,19 @@ file(GLOB project_SRCS *.cpp *.h)
 add_executable(${project_BIN} ${project_SRCS})
 
 target_link_libraries(${project_BIN}
-    PRIVATE io2d::io2d
-    PUBLIC pugixml
+  PRIVATE io2d::io2d
+  PUBLIC  ${CONAN_LIBS_PUGIXML}
 )
 
 #
 # create a library for unit tests
 #
 add_library(route_planner OBJECT route_planner.cpp model.cpp route_model.cpp)
-target_include_directories(route_planner PRIVATE ../thirdparty/pugixml/src)
+target_include_directories(route_planner PRIVATE ${CONAN_INCLUDE_DIRS_PUGIXML})
 
 
-if( ${CMAKE_SYSTEM_NAME} MATCHES "Linux" )
-    target_link_libraries(${project_BIN} PUBLIC pthread)
+if( ${CMAKE_SYSTEM_NAME} MATCHES "Linux" )  
+  target_link_libraries(${project_BIN} PUBLIC pthread)
 endif()
 
 if(MSVC)
