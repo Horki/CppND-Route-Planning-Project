@@ -1,38 +1,37 @@
-# Route Planning Project Starter Code
+# Route Planning Project
 
 This is the starter code for the Route Planning project. Instructions for each exercise can be found in the `instructions` directory, and unit tests for some exercises in the `test` directory.
 
 ## Cloning, EDIT
 
-When cloning this project, be sure to use the `--recurse-submodules` flag. Using HTTPS:
+~~When cloning this project, be sure to use the `--recurse-submodules` flag. Using HTTPS:~~
+We use Conan package manager, instead of git submodules.
 
-~~git clone https://github.com/udacity/CppND-Route-Planning-Project.git --recurse-submodules~~
-```
-git clone https://github.com/Horki/CppND-Route-Planning-Project.git --recurse-submodules
-```
-
-~~git clone git@github.com:udacity/CppND-Route-Planning-Project.git --recurse-submodules~~
-or with SSH:
-```
-git clone git@github.com:Horki/CppND-Route-Planning-Project.git --recurse-submodules
+```shell script
+git clone git@github.com:Horki/CppND-Route-Planning-Project.git
 ```
 
 ## Compiling and Running
 
+### Install IO2D
+[IO2D](https://github.com/cpp-io2d/P0267_RefImpl/) package is still missing in Conan repo, so we need to build and *install* it [manually](https://github.com/cpp-io2d/P0267_RefImpl/blob/master/BUILDING.md).
+
 ### Compiling
 To compile the project, first, create a `build` directory and change to that directory:
-```
+```shell script
 mkdir build && cd build
 ```
-From within the `build` directory, then run `cmake` and `make` as follows:
-```
+
+From within the `build` directory, first install dependencies with `conan` then run `cmake` and `make` as follows:
+```shell script
+conan install .. --build missing
 cmake ..
 make
 ```
 ### Running
 The executables will be placed in the `bin` directory. From within `build`, you can run the project as follows:
-```
-../bin/<name-of-parent-directory> -f ../map.osm
+```shell script
+../bin/<name-of-parent-directory> -f ../data/map.osm
 ```
 
 ## Testing
@@ -72,7 +71,7 @@ make build
 Run (ex: from build)
 
 ```bash
-build $ ../bin/CppND-Route-Planning-Project -f ../map.osm
+build $ ../bin/CppND-Route-Planning-Project -f ../data/map.osm
 ```
 
 Tasks
@@ -118,3 +117,9 @@ Tests
 
 Running "Route Planning Project" start(10, 10), end(90, 90)
 ![Route Planning Project](img/Route-Planning-Project.png)
+
+TODO
+
+- [ ] Add IO2D package through Conan, when available
+- [x] [GTest](https://github.com/google/googletest), through Conan
+- [x] [pugiXML](https://pugixml.org/), through Conan
