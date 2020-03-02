@@ -6,8 +6,7 @@
 #include <algorithm>
 #include <assert.h>
 
-static Model::Road::Type String2RoadType(std::string_view type)
-{
+static Model::Road::Type String2RoadType(std::string_view type) {
     if( type == "motorway" )        return Model::Road::Motorway;
     if( type == "trunk" )           return Model::Road::Trunk;
     if( type == "primary" )         return Model::Road::Primary;

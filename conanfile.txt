@@ -6,3 +6,4 @@ pugixml/1.10@bincrafters/stable
 cmake
 
 [options]
+gtest:shared=True

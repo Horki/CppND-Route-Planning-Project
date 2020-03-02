@@ -3,7 +3,7 @@
 #
 set(project_BIN ${PROJECT_NAME})
 
-include_directories(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
 #
