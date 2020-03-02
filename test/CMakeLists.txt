@@ -29,6 +29,7 @@ else()
 endif()
 
 target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS} route_planner)
+target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
 add_test(
   NAME    ${PROJECT_NAME}
   COMMAND ${PROJECT_NAME}

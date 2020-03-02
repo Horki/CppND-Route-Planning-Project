@@ -1,5 +1,6 @@
-#include "render.h"
 #include <iostream>
+
+#include "render.h"
 
 static float RoadMetricWidth(Model::Road::Type type);
 static io2d::rgba_color RoadColor(Model::Road::Type type);

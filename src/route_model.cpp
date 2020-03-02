@@ -1,5 +1,6 @@
-#include "route_model.h"
 #include <iostream>
+
+#include "route_model.h"
 
 RouteModel::RouteModel(const std::vector<std::byte> &xml) : Model(xml) {
     int counter = 0;

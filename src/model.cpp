@@ -1,10 +1,13 @@
-#include "model.h"
-#include "pugixml.hpp"
 #include <iostream>
 #include <string_view>
 #include <cmath>
 #include <algorithm>
-#include <assert.h>
+#include <cassert>
+
+#include <pugixml.hpp>
+
+#include "model.h"
+
 
 static Model::Road::Type String2RoadType(std::string_view type) {
     if( type == "motorway" )        return Model::Road::Motorway;

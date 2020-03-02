@@ -3,8 +3,10 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <io2d.h>
 #include <string_view>
+
+#include <io2d.h>
+
 #include "route_model.h"
 #include "render.h"
 #include "route_planner.h"
