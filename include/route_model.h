@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ROUTE_MODEL_H_
+#define ROUTE_MODEL_H_
 
 #include <limits>
 #include <cmath>
@@ -47,3 +48,5 @@ class RouteModel : public Model {
     std::unordered_map<int, std::vector<const Model::Road *>> node_to_road;
     void CreateNodeToRoadHashmap();
 };
+
+#endif

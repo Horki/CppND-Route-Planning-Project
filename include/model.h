@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MODEL_H_
+#define MODEL_H_
 
 #include <vector>
 #include <unordered_map>
@@ -77,3 +78,5 @@ private:
     double m_MaxLon = 0.;
     double m_MetricScale = 1.f;
 };
+
+#endif

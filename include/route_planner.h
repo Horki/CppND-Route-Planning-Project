@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ROUTE_PLANNER_H_
+#define ROUTE_PLANNER_H_
 
 #include <iostream>
 #include <vector>
@@ -25,3 +26,5 @@ class RoutePlanner {
     RouteModel::Node *NextNode();
     void AddNeighbors(RouteModel::Node *);
 };
+
+#endif
