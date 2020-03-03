@@ -9,7 +9,7 @@ conan_basic_setup()
 #
 # Find all executables
 #
-file(GLOB project_SRCS *.cpp *.h)
+file(GLOB project_SRCS *.cpp)
 
 #
 # Add executables to project
@@ -27,7 +27,6 @@ target_link_libraries(${project_BIN}
 include_directories(${PROJECT_SOURCE_DIR}/include)
 add_library(route_planner OBJECT route_planner.cpp model.cpp route_model.cpp)
 target_include_directories(route_planner PRIVATE ${CONAN_INCLUDE_DIRS_PUGIXML})
-#target_include_directories(${project_BIN} PUBLIC ${PROJECT_SOURCE_DIR}/include)
 
 
 if( ${CMAKE_SYSTEM_NAME} MATCHES "Linux" )  

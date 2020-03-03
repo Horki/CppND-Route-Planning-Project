@@ -28,10 +28,14 @@ else()
   add_executable(${PROJECT_NAME})
 endif()
 
-target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS} route_planner)
-target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
+target_link_libraries(${PROJECT_NAME}
+        PUBLIC
+        route_planner
+        ${CONAN_LIBS})
+target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/../include)
 add_test(
   NAME    ${PROJECT_NAME}
+  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
   COMMAND ${PROJECT_NAME}
 )
 

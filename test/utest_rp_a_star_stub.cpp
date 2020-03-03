@@ -40,7 +40,7 @@ std::vector<std::byte> ReadOSMData(const std::string &path) {
 
 class RouteModelTest : public ::testing::Test {
   protected:
-    std::string osm_data_file = "../map.osm";
+    std::string osm_data_file = "../data/map.osm";
     std::vector<std::byte> osm_data = ReadOSMData(osm_data_file);
     RouteModel model{osm_data};
 };
@@ -122,7 +122,7 @@ TEST_F(RouteModelTest, FindClosestNode) {
 
 class RoutePlannerTest : public ::testing::Test {
   protected:
-    std::string osm_data_file = "../map.osm";
+    std::string osm_data_file = "../data/map.osm";
     std::vector<std::byte> osm_data = ReadOSMData(osm_data_file);
     RouteModel model{osm_data};
     RoutePlanner route_planner{model, 10, 10, 90, 90};
