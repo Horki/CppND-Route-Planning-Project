@@ -37,13 +37,13 @@ The executables will be placed in the `bin` directory. From within `build`, you 
 ## Testing
 
 For exercises that have unit tests, the project must be built with the approprate test cpp file. This can be done by passing a string with the `-DTESTING` flag in `cmake`. For example, from the build directory:
-```
+```shell script
 cmake -DTESTING="RouteModel" ..
 make
 ```
 Those commands will build the code with the tests for the "Fill Out Route Model" exercise. The tests can then be run from the `build` directory as follows:
-```
-../bin/test
+```shell script
+../test/bin/test
 ```
 Exercises with tests will specify which string to pass with `-DTESTING`, but a table is given below with the complete list for reference:
 
@@ -59,6 +59,17 @@ Exercises with tests will specify which string to pass with `-DTESTING`, but a t
 | Write the A\* Search Stub   |        "AStarStub"       |
 | Finish A\* Search           |       "AStarSearch"      |
 
+```shell script
+cmake -DTESTING="RouteModel" ..    && make && ./test/bin/test
+cmake -DTESTING="RMNodeClass" ..   && make && ./test/bin/test
+cmake -DTESTING="RMSNodes" ..      && make && ./test/bin/test
+cmake -DTESTING="NodeDist" ..      && make && ./test/bin/test
+cmake -DTESTING="NodeToRoad" ..    && make && ./test/bin/test
+cmake -DTESTING="FindNeighbors" .. && make && ./test/bin/test
+cmake -DTESTING="FindClosest" ..   && make && ./test/bin/test
+cmake -DTESTING="AStarStub" ..     && make && ./test/bin/test
+cmake -DTESTING="AStarSearch" ..   && make && ./test/bin/test
+```
 
 # My solution
 
@@ -97,22 +108,19 @@ Write NextNode | Done
 Write distance function | Done
 
 
-<!--
-
 Tests
 
 | Exercise Name               | `-DTESTING` String Value | Status |
 |-----------------------------|:------------------------:|:-------|
-| Fill Out Route Model        |       "RouteModel"       | FAILED |
-| Fill Out Node Class         |       "RMNodeClass"      | FAILED |
+| Fill Out Route Model        |       "RouteModel"       | PASSED |
+| Fill Out Node Class         |       "RMNodeClass"      | PASSED |
 | Create RouteModel Nodes     |        "RMSNodes"        | PASSED |
 | Write the Distance Function |        "NodeDist"        | PASSED |
-| Create Road to Node Hashmap |       "NodeToRoad"       | FAILED |
-| Write FindNeighbors         |      "FindNeighbors"     | FAILED |
-| Find the Closest Node       |       "FindClosest"      | FAILED |
-| Write the A\* Search Stub   |        "AStarStub"       | FAILED |
-| Finish A\* Search           |       "AStarSearch"      | FAILED |
--->
+| Create Road to Node Hashmap |       "NodeToRoad"       | PASSED |
+| Write FindNeighbors         |      "FindNeighbors"     | PASSED |
+| Find the Closest Node       |       "FindClosest"      | PASSED |
+| Write the A\* Search Stub   |        "AStarStub"       | PASSED |
+| Finish A\* Search           |       "AStarSearch"      | PASSED |
 
 
 Running "Route Planning Project" start(10, 10), end(90, 90)
