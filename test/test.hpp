@@ -1,3 +1,6 @@
+#ifndef TEST_HPP_
+#define TEST_HPP_
+
 #include <string>
 #include <optional>
 #include <fstream>
@@ -64,3 +67,5 @@ std::vector<std::byte> ReadOSMData(const std::string &path) {
     }
     return osm_data;
 }
+
+#endif
