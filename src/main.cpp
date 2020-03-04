@@ -4,14 +4,13 @@
 #include <vector>
 #include <string>
 #include <string_view>
+#include <cstdlib>
 
 #include <io2d.h>
 
 #include "route_model.h"
 #include "render.h"
 #include "route_planner.h"
-
-using namespace std::experimental;
 
 static std::optional<std::vector<std::byte>> ReadFile(const std::string &path) {
     std::ifstream is{path, std::ios::binary | std::ios::ate};
@@ -31,7 +30,7 @@ static std::optional<std::vector<std::byte>> ReadFile(const std::string &path) {
     return std::move(contents);
 }
 
-static void check_range(const std::string &s, float &point) {
+static void check_range(std::string_view s, float &point) {
     std::cout << s;
     std::cin >> point;
     if (point < 0 || point > 100.0) {
@@ -42,14 +41,15 @@ static void check_range(const std::string &s, float &point) {
 
 int main(int argc, const char **argv) {
     std::string osm_data_file = "";
-    if (argc > 1) {
-        for (int i = 1; i < argc; ++i) {
-            if (std::string_view{argv[i]} == "-f" && ++i < argc) {
-                osm_data_file = argv[i];
-            }
-        }
-    } else {
-        std::cerr << "Usage: [executable] [-f filename.osm]" << std::endl;
+    if (argc == 1) {
+      std::cerr << "Usage: [executable] [-f filename.osm]" << std::endl;
+      return EXIT_FAILURE;
+    }
+
+    for (int i = 1; i < argc; ++i) {
+      if (std::string_view{argv[i]} == "-f" && ++i < argc) {
+        osm_data_file = argv[i];
+      }
     }
 
     std::vector<std::byte> osm_data;
@@ -58,23 +58,22 @@ int main(int argc, const char **argv) {
         std::cout << "Reading OpenStreetMap data from the following file: " <<  osm_data_file << std::endl;
         auto data = ReadFile(osm_data_file);
         if (!data) {
-            std::cout << "Failed to read." << std::endl;
-        } else {
-            osm_data = std::move(*data);
+            std::cerr << "Failed to read." << std::endl;
+            return EXIT_FAILURE;
         }
+        osm_data = std::move(*data);
     }
 
-    // TODO: Declare floats `start_x`, `start_y`, `end_x`, and `end_y` and get
+    // Declared floats `start_x`, `start_y`, `end_x`, and `end_y` and get
     // user input for these values using std::cin. Pass the user input to the
     // RoutePlanner object below.
     float start_x, start_y, end_x, end_y;
     std::cout << "The map coordinates begin at (0, 0) in the lower left corner, and end at (100, 100) in the upper right corner.\n";
-//    check_range("Enter a start x between 0 and 100: ", start_x);
-//    check_range("Enter a start y between 0 and 100: ", start_y);
-//    check_range("Enter a end   x between 0 and 100: ", end_x);
-//    check_range("Enter a end   y between 0 and 100: ", end_y);
-    // Test points
-    start_x = 10.f; start_y = 10.f; end_x = 90.f; end_y = 90.f;
+    std::cout << "example Start(10, 10), End(90, 90)" << std::endl;
+    check_range("Enter a start x between 0 and 100: ", start_x);
+    check_range("Enter a start y between 0 and 100: ", start_y);
+    check_range("Enter a end   x between 0 and 100: ", end_x);
+    check_range("Enter a end   y between 0 and 100: ", end_y);
 
     std::cout << "Start (" << start_x << ", " << start_y << ") End (" << end_x << ", " << end_y << ")\n";
 
@@ -88,7 +87,10 @@ int main(int argc, const char **argv) {
     Render render{model};
 
     auto display = io2d::output_surface{400, 400,
-                io2d::format::argb32, io2d::scaling::none, io2d::refresh_style::fixed, 30};
+                                        io2d::format::argb32,
+                                        io2d::scaling::none,
+                                        io2d::refresh_style::fixed,
+                                        30};
     display.size_change_callback([](io2d::output_surface& surface) {
         surface.dimensions(surface.display_dimensions());
     });
