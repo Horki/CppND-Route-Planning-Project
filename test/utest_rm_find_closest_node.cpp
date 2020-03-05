@@ -33,7 +33,8 @@ TEST_F(RouteModelTest, NodeToRoad) {
     EXPECT_EQ(node_to_road[0].size(), 2);
     EXPECT_EQ(node_to_road[30].size(), 2);
     EXPECT_EQ(node_to_road[90].size(), 2);
-    EXPECT_EQ(node_to_road[0][0]->way, 500);
+//    EXPECT_EQ(node_to_road[0][0]->way, 500);
+    EXPECT_EQ(node_to_road[0][0]->way, 551);
     EXPECT_EQ(node_to_road[30][1]->way, 613);
     EXPECT_EQ(node_to_road[90][1]->way, 475);
 }
@@ -43,8 +44,10 @@ TEST_F(RouteModelTest, FindNeighbors) {
     auto test_node = model.SNodes()[0];
     test_node.FindNeighbors();
     EXPECT_EQ(test_node.neighbors.size(), 2);
-    EXPECT_FLOAT_EQ(test_node.neighbors[1]->x, 1.3250526);
-    EXPECT_FLOAT_EQ(test_node.neighbors[1]->y, 0.41849667);
+//    EXPECT_FLOAT_EQ(test_node.neighbors[1]->x, 1.3250526);
+//    EXPECT_FLOAT_EQ(test_node.neighbors[1]->y, 0.41849667);
+    EXPECT_FLOAT_EQ(test_node.neighbors[1]->x,1.1881341);
+    EXPECT_FLOAT_EQ(test_node.neighbors[1]->y,-0.029241385);
     test_node.neighbors.clear(); // Clear out neighbors just added.
     test_node = model.SNodes()[100];
     test_node.FindNeighbors();
