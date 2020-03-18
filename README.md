@@ -14,22 +14,36 @@ git clone git@github.com:Horki/CppND-Route-Planning-Project.git
 ## Compiling and Running
 
 ### Install IO2D
+
 [IO2D](https://github.com/cpp-io2d/P0267_RefImpl/) package is still missing in Conan repo, so we need to build and *install* it [manually](https://github.com/cpp-io2d/P0267_RefImpl/blob/master/BUILDING.md).
 
 ### Compiling
+
 To compile the project, first, create a `build` directory and change to that directory:
+
 ```shell script
 mkdir build && cd build
 ```
 
 From within the `build` directory, first install dependencies with `conan` then run `cmake` and `make` as follows:
+
 ```shell script
 conan install .. --build missing
 cmake ..
 make
 ```
+
+Or run a single command:
+
+```shell script
+make build
+# make debug # for debug build
+```
+
 ### Running
+
 The executables will be placed in the `bin` directory. From within `build`, you can run the project as follows:
+
 ```shell script
 ../bin/<name-of-parent-directory> -f ../data/map.osm
 ```
@@ -37,14 +51,18 @@ The executables will be placed in the `bin` directory. From within `build`, you 
 ## Testing
 
 For exercises that have unit tests, the project must be built with the approprate test cpp file. This can be done by passing a string with the `-DTESTING` flag in `cmake`. For example, from the build directory:
+
 ```shell script
 cmake -DTESTING="RouteModel" ..
 make
 ```
+
 Those commands will build the code with the tests for the "Fill Out Route Model" exercise. The tests can then be run from the `build` directory as follows:
+
 ```shell script
 ../test/bin/test
 ```
+
 Exercises with tests will specify which string to pass with `-DTESTING`, but a table is given below with the complete list for reference:
 
 | Exercise Name               | `-DTESTING` String Value |
@@ -71,7 +89,7 @@ cmake -DTESTING="AStarStub" ..     && make && ./test/bin/test
 cmake -DTESTING="AStarSearch" ..   && make && ./test/bin/test
 ```
 
-# My solution
+## My solution
 
 Compile
 
@@ -107,7 +125,6 @@ Write FindNeighbors | Done
 Write NextNode | Done
 Write distance function | Done
 
-
 Tests
 
 | Exercise Name               | `-DTESTING` String Value | Status |
@@ -121,7 +138,6 @@ Tests
 | Find the Closest Node       |       "FindClosest"      | PASSED |
 | Write the A\* Search Stub   |        "AStarStub"       | PASSED |
 | Finish A\* Search           |       "AStarSearch"      | PASSED |
-
 
 Running "Route Planning Project" start(10, 10), end(90, 90)
 ![Route Planning Project](img/Route-Planning-Project.png)
